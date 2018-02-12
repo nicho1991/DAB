@@ -88,6 +88,7 @@ namespace CodeFirstNewDatabaseSample
         {
             public int OrganizationId { get; set; }
             public string OrganizationName { get; set; }
+            //test
         }
     }
 }
