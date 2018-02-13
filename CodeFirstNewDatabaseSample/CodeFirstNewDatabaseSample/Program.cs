@@ -115,6 +115,7 @@ namespace CodeFirstNewDatabaseSample
         {
             [Key]
             public string OrganizationName { get; set; }
+            //test
         }
     }
 }
