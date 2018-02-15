@@ -89,6 +89,18 @@
     <Compile Include="Migrations\201802151438002_virtual.Designer.cs">
       <DependentUpon>201802151438002_virtual.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802151553174_Country.cs" />
+    <Compile Include="Migrations\201802151553174_Country.Designer.cs">
+      <DependentUpon>201802151553174_Country.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802151555327_HomeLands.cs" />
+    <Compile Include="Migrations\201802151555327_HomeLands.Designer.cs">
+      <DependentUpon>201802151555327_HomeLands.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802151621577_nla.cs" />
+    <Compile Include="Migrations\201802151621577_nla.Designer.cs">
+      <DependentUpon>201802151621577_nla.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -127,6 +139,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802151438002_virtual.resx">
       <DependentUpon>201802151438002_virtual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802151553174_Country.resx">
+      <DependentUpon>201802151553174_Country.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802151555327_HomeLands.resx">
+      <DependentUpon>201802151555327_HomeLands.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802151621577_nla.resx">
+      <DependentUpon>201802151621577_nla.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

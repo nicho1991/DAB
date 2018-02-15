@@ -91,6 +91,7 @@ namespace CodeFirstNewDatabaseSample
                 {
                     Console.WriteLine(VARIABLE.Organization.OrganizationName +"\t\t" + VARIABLE.Username + " belongs to ");
                 }
+               
             }
 
             public void PrintOrganizations()
@@ -109,6 +110,29 @@ namespace CodeFirstNewDatabaseSample
 
         }
 
+        public class CountryLogic
+        {
+            private BloggingContext db = new BloggingContext();
+
+            public void PrintCountriesAndOrgs()
+            {
+                var countryQuery = from c in db.Countries.Include("OrgsInCountry")
+                    orderby c.CountryName
+                    select c;
+        
+                Console.WriteLine("All Countries, orderes by name, and their orgs");
+                foreach (var VARIABLE in countryQuery)
+                {
+                    Console.Write(VARIABLE.CountryName + "\t\twith id: " +  VARIABLE.CountryCode + "\t has the orgs:\t");
+                    foreach (var org in VARIABLE.OrgsInCountry)
+                    {
+                        Console.Write(org.OrganizationName + " ");
+                    }
+                    Console.WriteLine();
+                }
+            }
+        }
+
         private static void Main(string[] args)
         {
 
@@ -122,10 +146,12 @@ namespace CodeFirstNewDatabaseSample
                 OrganizationLogic newOrg = new OrganizationLogic();
 
                 //newOrg.NewUserForOrg();
-                newOrg.PrintOrganizations();
-                newOrg.PrintOrganizaionsAndTheirUsers();
+                //newOrg.PrintOrganizations();
+                //newOrg.PrintOrganizaionsAndTheirUsers();
                 //newOrg.MakeOrganization();
                 
+                CountryLogic newCountryLogic = new CountryLogic();
+                newCountryLogic.PrintCountriesAndOrgs();
 
                 Console.WriteLine("Press any key to exit...");
                 Console.ReadKey();
@@ -160,6 +186,7 @@ namespace CodeFirstNewDatabaseSample
             public DbSet<Post> Posts { get; set; }
             public DbSet<User> Users { get; set; }
             public DbSet<Organization> Organizations { get; set; }
+            public DbSet<Country> Countries { get; set; }
 
             protected override void OnModelCreating(DbModelBuilder modelBuilder)
             {
@@ -181,7 +208,16 @@ namespace CodeFirstNewDatabaseSample
         {
             [Key]
             public string OrganizationName { get; set; }
-         
+            public virtual List<Country> HomeLands { get; set; }
+        }
+
+        public class Country
+        {
+            [Key]
+            public int CountryId { get; set; }
+            public string CountryName { get; set;}
+            public int CountryCode { get; set; }
+            public virtual List<Organization> OrgsInCountry { get; set; }
         }
     }
 }
