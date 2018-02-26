@@ -144,14 +144,13 @@ namespace CodeFirstNewDatabaseSample
                 //newBlog.DisplayBlogs();
 
                 OrganizationLogic newOrg = new OrganizationLogic();
-
                 //newOrg.NewUserForOrg();
                 //newOrg.PrintOrganizations();
                 //newOrg.PrintOrganizaionsAndTheirUsers();
                 //newOrg.MakeOrganization();
                 
                 CountryLogic newCountryLogic = new CountryLogic();
-                newCountryLogic.PrintCountriesAndOrgs();
+                //newCountryLogic.PrintCountriesAndOrgs();
 
                 Console.WriteLine("Press any key to exit...");
                 Console.ReadKey();
@@ -165,8 +164,7 @@ namespace CodeFirstNewDatabaseSample
             public string Name { get; set; }
 
             public string Url { get; set; }
-            /*You’ll notice that we’re making the two navigation properties (Blog.Posts and Post.Blog) virtual. This enables the Lazy Loading feature of Entity Framework.
-             Lazy Loading means that the contents of these properties will be automatically loaded from the database when you try to access them.*/
+           
             public virtual List<Post> Posts { get; set; }
         }
 
